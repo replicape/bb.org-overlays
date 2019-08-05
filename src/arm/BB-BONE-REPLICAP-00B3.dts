@@ -193,40 +193,73 @@
 	};
 
 	fragment@4 {
-		target = <&pruss>;
-		__overlay__{
-			status = "okay";
-			pinctrl-names = "default";
-			pinctrl-0 = <&pruicss_stepper_pins>;
+		target = <&ocp>;
+		__overlay__ {
+			bone-replicape {
+				compatible = "gpio-of-helper";
+				status = "okay";
+				pinctrl-names = "default";
+				pinctrl-0 = <>;
 
-			stepper_x {
-				pin-names	= "Replic:pru-step_x", "Replic:pru-dir_x";
-				gpios		= <&gpio0 27 0
-						   &gpio1 29 0>;
-			};
+				step_x {
+					gpio-name = "Replic:step_x";
+					gpio = <&gpio0 27 0>;
+					output;
+				};
 
-			stepper_y {
-				pin-names	= "Replic:pru-step_y", "Replic:pru-dir_y";
-				gpios		= <&gpio1 12 0
-						   &gpio0 22 0>;
-			};
+				dir_x {
+					gpio-name = "Replic:dir_x";
+					gpio = <&gpio1 29 0>;
+					output;
+				};
 
-			stepper_z {
-				pin-names	= "Replic:pru-step_z", "Replic:pru-dir_z";
-				gpios		= <&gpio0 23 0
-						   &gpio0 26 0>;
-			};
+				step_y {
+					gpio-name = "Replic:step_y";
+					gpio = <&gpio1 12 0>;
+					output;
+				};
 
-			stepper_ext_1 {
-				pin-names	= "Replic:pru-step_ext_1", "Replic:pru-dir_ext_1";
-				gpios		= <&gpio1 28 0
-						   &gpio1 15 0>;
-			};
+				dir_y {
+					gpio-name = "Replic:dir_y";
+					gpio = <&gpio0 22 0>;
+					output;
+				};
 
-			stepper_ext_2 {
-				pin-names	= "Replic:pru-step_ext_2", "Replic:pru-dir_ext_2";
-				gpios		= <&gpio1 13 0
-						   &gpio1 14 0>;
+				step_z {
+					gpio-name = "Replic:step_z";
+					gpio = <&gpio0 23 0>;
+					output;
+				};
+
+				dir_z {
+					gpio-name = "Replic:dir_z";
+					gpio = <&gpio0 26 0>;
+					output;
+				};
+
+				step_e {
+					gpio-name = "Replic:step_e";
+					gpio = <&gpio1 28 0>;
+					output;
+				};
+
+				dir_e {
+					gpio-name = "Replic:dir_e";
+					gpio = <&gpio1 15 0>;
+					output;
+				};
+
+				step_h {
+					gpio-name = "Replic:step_h";
+					gpio = <&gpio1 13 0>;
+					output;
+				};
+
+				dir_h {
+					gpio-name = "Replic:dir_h";
+					gpio = <&gpio1 14 0>;
+					output;
+				};
 			};
 		};
 	};
